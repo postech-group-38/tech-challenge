@@ -1,14 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { Module } from '@nestjs/common';
-import { APIModule } from './modules/nest/server/rest/api/nest/module';
-
-@Module({
-  imports: [APIModule],
-})
-class AppModule {}
+import setupDoc from './doc/swagger';
+import { AppModule } from './module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.listen(8080);
+
+  setupDoc(app);
+
+  await app.listen(8080);
 }
 bootstrap();
