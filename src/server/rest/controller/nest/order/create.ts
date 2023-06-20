@@ -12,8 +12,8 @@ import { OrderService } from '../../../../../domain/service/order/index';
 import { OrderRequest } from '../../../model/request/order';
 
 @Controller('/order')
-export class OrderController {
-  private readonly logger = new Logger(OrderController.name);
+export class OrderCreateController {
+  private readonly logger = new Logger(OrderCreateController.name);
 
   constructor(private readonly orderService: OrderService) {}
 
