@@ -51,6 +51,9 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
+# Docker 
+$ docker run -d --name tech-challenger  -p 8080:8080 challenge:1.0
+
 # e2e tests
 $ npm run test:e2e
 
