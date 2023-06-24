@@ -31,7 +31,7 @@ import {
   
       const createdId = await this.productService.create(product);
   
-      this.logger.log(`The order with id ${createdId} was created`);
+      this.logger.log(`The Product with id ${createdId} was created`);
   
       res
         .status(HttpStatus.CREATED)

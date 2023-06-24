@@ -20,8 +20,8 @@ export class ProductService {
   }
 
   async search(filter: ProductFilter) {
-    const [total, orders] = await this.findWithTotal(filter);
-    return new Page(orders, filter, total);
+    const [total, products] = await this.findWithTotal(filter);
+    return new Page(products, filter, total);
   }
 
   private findWithTotal(filter: ProductFilter) {
