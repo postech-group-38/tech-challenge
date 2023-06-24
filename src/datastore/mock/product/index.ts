@@ -8,7 +8,7 @@ const mockedOrders = [
     new Product('product_c'),
 ];
 
-export class ProductrepositoryMock implements ProductRepository {
+export class ProductRepositoryMock implements ProductRepository {
   count(filter: ProductFilter): Promise<number> {
     return Promise.resolve(10);
   }
@@ -19,5 +19,9 @@ export class ProductrepositoryMock implements ProductRepository {
 
   create(product: Product): Promise<string> {
     return Promise.resolve('12345');
+  }
+
+  delete(id: string): Promise<void> {
+    return Promise.resolve()
   }
 }
