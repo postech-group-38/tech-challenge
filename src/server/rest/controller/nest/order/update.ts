@@ -2,20 +2,21 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Put,
   HttpStatus,
-  Post,
-  Res,
+  HttpCode,
 } from '@nestjs/common';
 import { Order } from 'src/domain/model/order';
 import { OrderService } from '../../../../../domain/service/order/index';
 import { OrderRequest } from '../../../model/request/order';
 
 @Controller('/order')
-export class OrderCreateController {
+export class OrderUpdateController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post()
-  async create(@Body() dto: OrderRequest, @Res() res) {
+  @Put()
+  @HttpCode(HttpStatus.NO_CONTENT)
+  update(@Body() dto: OrderRequest) {
     let order: Order;
 
     try {
@@ -24,11 +25,6 @@ export class OrderCreateController {
       throw new BadRequestException(error.message);
     }
 
-    const createdId = await this.orderService.create(order);
-
-    res
-      .status(HttpStatus.CREATED)
-      .location('/order/' + createdId)
-      .json(createdId);
+    return this.orderService.update(order);
   }
 }

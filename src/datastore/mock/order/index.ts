@@ -25,14 +25,27 @@ const mockedOrders = [
 ];
 
 export class OrderRepositoryMock implements OrderRepository {
+  findById(orderId: string): Promise<Order> {
+    console.log('OrderRepositoryMock::count', orderId);
+    return Promise.resolve(mockedOrders[0]);
+  }
   count(filter: OrderFilter): Promise<number> {
+    console.log('OrderRepositoryMock::count', filter);
     return Promise.resolve(10);
   }
+
   find(filter: OrderFilter): Promise<Order[]> {
+    console.log('OrderRepositoryMock::find', filter);
     return Promise.resolve(mockedOrders);
   }
 
   create(order: Order): Promise<string> {
+    console.log('OrderRepositoryMock::create', order);
     return Promise.resolve('12345');
+  }
+
+  update(order: Order): Promise<void> {
+    console.log('OrderRepositoryMock::update', order);
+    return Promise.resolve();
   }
 }
