@@ -5,6 +5,8 @@ import { OrderRespose } from '../../../model/response/order';
 import { Page } from '../../../../../domain/common/page';
 import { Order } from '../../../../../domain/model/order';
 import { OrderFilter } from '../../../../../domain/repository/order/filter';
+import { ApiQuery } from '@nestjs/swagger';
+import { OrderStatus } from '../../../../../domain/model/order-status';
 
 @Controller('/order')
 export class OrderSearchController {
@@ -13,6 +15,11 @@ export class OrderSearchController {
   constructor(private readonly orderService: OrderService) {}
 
   @Get()
+  @ApiQuery({ name: 'orderId', required: false })
+  @ApiQuery({ name: 'customerId', required: false })
+  @ApiQuery({ name: 'status', enum: OrderStatus, required: false })
+  @ApiQuery({ name: 'offset', type: 'number', required: false })
+  @ApiQuery({ name: 'limit', type: 'number', required: false })
   async search(@Query() query: OrderQuery) {
     const filter = query.toFilter();
     const orderPage = await this.orderService.search(filter);

@@ -7,6 +7,7 @@ import { OrderFilter } from '../../repository/order/filter';
 import { Customer } from '../../model/customer';
 import { Payment } from '../../model/payment';
 import { PaymentMethod } from '../../model/payment-method';
+import { OrderStatus } from '../../model/order-status';
 
 describe('OrderService', () => {
   const repository = new OrderRepositoryMock();
@@ -57,7 +58,11 @@ describe('OrderService', () => {
 
     it('should call repository search and promise reject', async () => {
       const findSpy = repositoryStub.find.rejects({ message: 'test' });
-      const filter = new OrderFilter('orderId_1', 'customerId_1');
+      const filter = new OrderFilter(
+        OrderStatus.DRAFT,
+        'orderId_1',
+        'customerId_1',
+      );
 
       expect.assertions(2);
       await expect(service.search(filter)).rejects.toEqual({ message: 'test' });
@@ -72,7 +77,11 @@ describe('OrderService', () => {
       );
       const findSpy = repositoryStub.find.resolves([expectedOrder]);
       const countSpy = repositoryStub.count.rejects({ message: 'test' });
-      const filter = new OrderFilter('orderId_1', 'customerId_1');
+      const filter = new OrderFilter(
+        OrderStatus.DRAFT,
+        'orderId_1',
+        'customerId_1',
+      );
 
       expect.assertions(3);
       await expect(service.search(filter)).rejects.toEqual({ message: 'test' });
@@ -88,7 +97,11 @@ describe('OrderService', () => {
       );
       const findSpy = repositoryStub.find.resolves([orderMock]);
       const countSpy = repositoryStub.count.resolves(10);
-      const filter = new OrderFilter('orderId_1', 'customerId_1');
+      const filter = new OrderFilter(
+        OrderStatus.DRAFT,
+        'orderId_1',
+        'customerId_1',
+      );
 
       const expected = {
         items: [
