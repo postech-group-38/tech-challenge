@@ -25,7 +25,9 @@ export class OrderService {
     }
     currentOrder.update(order);
     await this.respository.update(currentOrder);
-    this.logger.info(`The order with id ${order.id} was update` + currentOrder);
+    this.logger.info(
+      `The order with id ${order.id} was updated` + currentOrder,
+    );
   }
 
   async search(filter: OrderFilter) {

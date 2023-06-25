@@ -26,7 +26,8 @@ const mockedOrders = [
 
 export class OrderRepositoryMock implements OrderRepository {
   findById(orderId: string): Promise<Order> {
-    throw new Error('Method not implemented.');
+    console.log('OrderRepositoryMock::count', orderId);
+    return Promise.resolve(mockedOrders[0]);
   }
   count(filter: OrderFilter): Promise<number> {
     console.log('OrderRepositoryMock::count', filter);
