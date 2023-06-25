@@ -3,7 +3,6 @@ import {
   Body,
   Controller,
   HttpStatus,
-  Logger,
   Post,
   Res,
 } from '@nestjs/common';
@@ -13,8 +12,6 @@ import { OrderRequest } from '../../../model/request/order';
 
 @Controller('/order')
 export class OrderCreateController {
-  private readonly logger = new Logger(OrderCreateController.name);
-
   constructor(private readonly orderService: OrderService) {}
 
   @Post()
@@ -28,8 +25,6 @@ export class OrderCreateController {
     }
 
     const createdId = await this.orderService.create(order);
-
-    this.logger.log(`The order with id ${createdId} was created`);
 
     res
       .status(HttpStatus.CREATED)

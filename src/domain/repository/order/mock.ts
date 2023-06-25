@@ -3,6 +3,12 @@ import { OrderFilter } from './filter';
 import { OrderRepository } from './index';
 
 export class OrderRepositoryMock implements OrderRepository {
+  update(order: Order): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  findById(orderId: string): Promise<Order> {
+    throw new Error('Method not implemented.');
+  }
   count(filter: OrderFilter): Promise<number> {
     throw new Error('Method not implemented.');
   }

@@ -81,30 +81,124 @@ describe('OrderService', () => {
     });
 
     it('should call repository search and promise resolve', async () => {
-      const expectedOrder = new Order(
+      const orderMock = new Order(
         [new Product('product_a'), new Product('product_b')],
         new Customer('customer_a'),
         new Payment(PaymentMethod.MERCADO_PAGO),
       );
-      const findSpy = repositoryStub.find.resolves([expectedOrder]);
+      const findSpy = repositoryStub.find.resolves([orderMock]);
       const countSpy = repositoryStub.count.resolves(10);
       const filter = new OrderFilter('orderId_1', 'customerId_1');
 
-      expect.assertions(3);
-      await expect(service.search(filter)).resolves.toEqual({
+      const expected = {
         items: [
-          {
-            customer: { name: 'customer_a' },
-            leadtime: undefined,
-            payment: { name: 'MERCADO_PAGO' },
-            products: [{ name: 'product_a' }, { name: 'product_b' }],
-            status: 'RECEIVED',
-          },
+          new Order(
+            [new Product('product_a'), new Product('product_b')],
+            new Customer('customer_a'),
+            new Payment(PaymentMethod.MERCADO_PAGO),
+          ),
         ],
         result: { limit: 10, offset: 0, total: 10 },
-      });
+      };
+
+      expect.assertions(3);
+      await expect(service.search(filter)).resolves.toEqual(expected);
       expect(countSpy.firstCall.args).toEqual([{ ...filter }]);
       expect(findSpy.firstCall.args).toEqual([{ ...filter }]);
+    });
+  });
+
+  describe('update', () => {
+    const sandbox = sinon.createSandbox();
+    let repositoryStub: sinon.SinonStubbedInstance<OrderRepositoryMock>;
+
+    beforeEach(() => {
+      repositoryStub = sandbox.stub(repository);
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it('should call repository update and promise reject when call findById', async () => {
+      const findByIdSpy = repositoryStub.findById.rejects({ message: 'test' });
+      const orderMock = new Order(
+        [new Product('product_a'), new Product('product_b')],
+        new Customer('customer_a'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderMock.id = 'order-id';
+
+      expect.assertions(3);
+      await expect(service.update(orderMock)).rejects.toEqual({
+        message: 'test',
+      });
+      expect(findByIdSpy.firstCall.args).toEqual(['order-id']);
+      expect(repositoryStub.update.called).toBeFalsy();
+    });
+
+    it('should call repository update and promise reject when call update', async () => {
+      const orderFromRepository = new Order(
+        [new Product('product_a')],
+        new Customer('customer_a'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderFromRepository.id = 'order-id';
+
+      const findByIdSpy = repositoryStub.findById.resolves(orderFromRepository);
+      const updateSpy = repositoryStub.update.rejects({ message: 'test' });
+
+      const orderToUpdate = new Order(
+        [new Product('product_a_update'), new Product('product_b_update')],
+        new Customer('customer_a_update'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderToUpdate.id = 'order-id';
+
+      const orderMerged = new Order(
+        [new Product('product_a_update'), new Product('product_b_update')],
+        new Customer('customer_a'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderMerged.id = 'order-id';
+
+      expect.assertions(3);
+      await expect(service.update(orderToUpdate)).rejects.toEqual({
+        message: 'test',
+      });
+      expect(findByIdSpy.firstCall.args).toEqual(['order-id']);
+      expect(updateSpy.firstCall.args).toEqual([orderMerged]);
+    });
+
+    it('should call repository update and promise resolve', async () => {
+      const orderFromRepository = new Order(
+        [new Product('product_a')],
+        new Customer('customer_a'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderFromRepository.id = 'order-id';
+
+      const findByIdSpy = repositoryStub.findById.resolves(orderFromRepository);
+      const updateSpy = repositoryStub.update.resolves();
+
+      const orderToUpdate = new Order(
+        [new Product('product_a_update'), new Product('product_b_update')],
+        new Customer('customer_a_update'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderToUpdate.id = 'order-id';
+
+      const orderMerged = new Order(
+        [new Product('product_a_update'), new Product('product_b_update')],
+        new Customer('customer_a'),
+        new Payment(PaymentMethod.MERCADO_PAGO),
+      );
+      orderMerged.id = 'order-id';
+
+      expect.assertions(3);
+      await expect(service.update(orderToUpdate)).resolves.toEqual(undefined);
+      expect(findByIdSpy.firstCall.args).toEqual(['order-id']);
+      expect(updateSpy.firstCall.args).toEqual([orderMerged]);
     });
   });
 });
