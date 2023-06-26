@@ -10,11 +10,11 @@ import { Order } from 'src/domain/model/order';
 import { OrderService } from '../../../../../../domain/service/order/index';
 import { OrderRequest } from '../../../model/request/order';
 
-@Controller('/order')
+@Controller()
 export class OrderUpdateController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Put()
+  @Put('/order')
   @HttpCode(HttpStatus.NO_CONTENT)
   update(@Body() dto: OrderRequest) {
     let order: Order;

@@ -3,6 +3,7 @@ import { OrderCreateController } from '../../../../../../../../infra/server/rest
 import { OrderServiceModule } from '../../../../../domain/service/order/index';
 import { OrderSearchController } from '../../../../../../../../infra/server/rest/controller/nest/order/search';
 import { OrderUpdateController } from '../../../../../../../../infra/server/rest/controller/nest/order/update';
+import { OrderConfirmController } from '../../../../../../../../infra/server/rest/controller/nest/order/confirm';
 
 @Module({
   imports: [OrderServiceModule],
@@ -10,6 +11,8 @@ import { OrderUpdateController } from '../../../../../../../../infra/server/rest
     OrderCreateController,
     OrderSearchController,
     OrderUpdateController,
+    OrderUpdateController,
+    OrderConfirmController,
   ],
   providers: [],
 })

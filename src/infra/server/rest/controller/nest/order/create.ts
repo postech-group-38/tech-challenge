@@ -10,11 +10,11 @@ import { Order } from 'src/domain/model/order';
 import { OrderService } from '../../../../../../domain/service/order/index';
 import { OrderRequest } from '../../../model/request/order';
 
-@Controller('/order')
+@Controller()
 export class OrderCreateController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post()
+  @Post('/order')
   async create(@Body() dto: OrderRequest, @Res() res) {
     let order: Order;
 

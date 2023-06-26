@@ -14,6 +14,7 @@ export class OrderService {
     @Inject(OrderQueue) private readonly orderQueue: OrderQueue,
   ) {}
 
+  //TODO: create tests
   async confirm(orderId: string) {
     const order = await this.respository.findById(orderId);
     if (!order) {

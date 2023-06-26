@@ -8,13 +8,13 @@ import { OrderFilter } from '../../../../../../domain/repository/order/filter';
 import { ApiQuery } from '@nestjs/swagger';
 import { OrderStatus } from '../../../../../../domain/model/order-status';
 
-@Controller('/order')
+@Controller()
 export class OrderSearchController {
   private readonly logger = new Logger(OrderSearchController.name);
 
   constructor(private readonly orderService: OrderService) {}
 
-  @Get()
+  @Get('/order')
   @ApiQuery({ name: 'orderId', required: false })
   @ApiQuery({ name: 'customerId', required: false })
   @ApiQuery({ name: 'status', enum: OrderStatus, required: false })
