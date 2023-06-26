@@ -3,14 +3,27 @@ import { Order } from '../../model/order';
 import { OrderRepository } from '../../repository/order/index';
 import { OrderFilter } from '../../repository/order/filter';
 import { Page } from '../../common/page';
-import * as log from '../../../log';
+import * as log from '../../../util/log';
+import { OrderQueue } from '../../queue/order/index';
 
 @Injectable()
 export class OrderService {
   private readonly logger = log.fromContext(OrderService.name);
   constructor(
     @Inject(OrderRepository) private readonly respository: OrderRepository,
+    @Inject(OrderQueue) private readonly orderQueue: OrderQueue,
   ) {}
+
+  async confirm(orderId: string) {
+    const order = await this.respository.findById(orderId);
+    if (!order) {
+      throw new Error(`Order ${order.id} not found`);
+    }
+    order.confirm();
+    await this.orderQueue.send(order);
+    await this.respository.update(order);
+    this.logger.info(`The order with id ${orderId} was received`);
+  }
 
   async create(order: Order) {
     const createdId = await this.respository.create(order);
