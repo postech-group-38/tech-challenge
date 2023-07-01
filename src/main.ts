@@ -1,8 +1,8 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import setupOpenAPI from './config/open-api/swagger';
-import { AppModule } from './module';
-import { initLogger } from './log';
+import { AppModule } from './config/module';
+import { initLogger } from './util/log';
 
 async function bootstrap() {
   initLogger();

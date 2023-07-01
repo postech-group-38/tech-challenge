@@ -7,7 +7,7 @@ import { ProductFilter } from 'src/domain/repository/product/filter';
 @Injectable()
 export class ProductService {
   constructor(
-    @Inject(ProductRepository) private readonly respository : ProductRepository
+    @Inject(ProductRepository) private readonly respository: ProductRepository,
   ) {}
 
   create(product: Product) {

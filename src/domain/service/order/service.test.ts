@@ -8,10 +8,12 @@ import { Customer } from '../../model/customer';
 import { Payment } from '../../model/payment';
 import { PaymentMethod } from '../../model/payment-method';
 import { OrderStatus } from '../../model/order-status';
+import { OrderQueueMock } from '../../queue/order/mock';
 
 describe('OrderService', () => {
   const repository = new OrderRepositoryMock();
-  const service = new OrderService(repository);
+  const queue = new OrderQueueMock();
+  const service = new OrderService(repository, queue);
 
   describe('create', () => {
     const sandbox = sinon.createSandbox();
