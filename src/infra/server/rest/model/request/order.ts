@@ -34,28 +34,24 @@ export class OrderRequest {
     }
     const customer = this.customer?.toDomain();
     const payment = this.payment?.toDomain();
-    return new Order(products, customer, payment);
+    return new Order(null, products, customer, payment);
   }
 }
 
-export class OrderQuery extends Query {
-  constructor(
-    readonly status: string,
-    readonly orderId: string,
-    readonly customerId: string,
-    offset: number,
-    limit: number,
-  ) {
-    super(offset, limit);
-  }
+export type OrderQuery = {
+  status: string;
+  orderId: string;
+  customerId: string;
+  offset: string;
+  limit: string;
+};
 
-  toFilter() {
-    return new OrderFilter(
-      this.status,
-      this.orderId,
-      this.customerId,
-      this.offset,
-      this.limit,
-    );
-  }
+export function toFilter(query: OrderQuery) {
+  return new OrderFilter(
+    query.status,
+    query.orderId,
+    query.customerId,
+    parseInt(query.offset),
+    parseInt(query.limit),
+  );
 }

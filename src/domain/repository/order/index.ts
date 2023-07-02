@@ -2,7 +2,7 @@ import { Order } from '../../model/order';
 import { OrderFilter } from './filter';
 
 export interface OrderRepository {
-  update(order: Order): Promise<void>;
+  update(order: Order): Promise<boolean>;
   create(order: Order): Promise<string>;
   find(filter: OrderFilter): Promise<Order[]>;
   findById(orderId: string): Promise<Order>;

@@ -3,7 +3,7 @@ import { OrderFilter } from './filter';
 import { OrderRepository } from './index';
 
 export class OrderRepositoryMock implements OrderRepository {
-  update(order: Order): Promise<void> {
+  update(order: Order): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
   findById(orderId: string): Promise<Order> {

@@ -1,6 +1,6 @@
 import { Controller, Logger, Get, Query } from '@nestjs/common';
 import { OrderService } from '../../../../../../domain/service/order/index';
-import { OrderQuery } from '../../../model/request/order';
+import { OrderQuery, toFilter } from '../../../model/request/order';
 import { OrderRespose } from '../../../model/response/order';
 import { Page } from '../../../../../../domain/common/page';
 import { Order } from '../../../../../../domain/model/order';
@@ -21,7 +21,7 @@ export class OrderSearchController {
   @ApiQuery({ name: 'offset', type: 'number', required: false })
   @ApiQuery({ name: 'limit', type: 'number', required: false })
   async search(@Query() query: OrderQuery) {
-    const filter = query.toFilter();
+    const filter = toFilter(query);
     const orderPage = await this.orderService.search(filter);
     return this.convertToResponse(orderPage, filter);
   }

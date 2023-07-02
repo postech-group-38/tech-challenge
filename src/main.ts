@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import setupOpenAPI from './config/open-api/swagger';
@@ -18,5 +20,6 @@ async function bootstrap() {
   setupOpenAPI(app);
 
   await app.listen(8080);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

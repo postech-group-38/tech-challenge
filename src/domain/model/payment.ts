@@ -1,7 +1,7 @@
 import { PaymentMethod } from './payment-method';
 import { AssertionConcern } from '../common/assertion-concern';
 export class Payment extends AssertionConcern<Payment> {
-  constructor(readonly name: PaymentMethod) {
+  constructor(readonly id: string, readonly name: PaymentMethod) {
     super();
     this.validate();
   }

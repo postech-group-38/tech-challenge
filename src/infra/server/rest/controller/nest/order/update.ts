@@ -9,14 +9,15 @@ import {
 import { Order } from 'src/domain/model/order';
 import { OrderService } from '../../../../../../domain/service/order/index';
 import { OrderRequest } from '../../../model/request/order';
+import { Param } from '@nestjs/common';
 
 @Controller()
 export class OrderUpdateController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Put('/order')
+  @Put('/order/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  update(@Body() dto: OrderRequest) {
+  update(@Param('id') id: string, @Body() dto: OrderRequest) {
     let order: Order;
 
     try {
@@ -24,6 +25,8 @@ export class OrderUpdateController {
     } catch (error) {
       throw new BadRequestException(error.message);
     }
+
+    order.id = id;
 
     return this.orderService.update(order);
   }

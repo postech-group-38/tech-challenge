@@ -8,6 +8,6 @@ export class CustomerRequest {
   name: string;
 
   toDomain() {
-    return new Customer(this.name);
+    return new Customer(null, this.name);
   }
 }

@@ -17,9 +17,13 @@ describe('OrderService', () => {
   describe('domain:model:order:update()', () => {
     it('should dont allow confirm order with status different of DRAFT', () => {
       const order = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
       order.confirm();
@@ -31,9 +35,13 @@ describe('OrderService', () => {
 
     it('should confirm order with status DRAFT', () => {
       const order = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
 
@@ -44,14 +52,22 @@ describe('OrderService', () => {
 
     it('should dont allow update order different of DRAFT', () => {
       const update = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       const order = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
       order.confirm();
@@ -63,9 +79,13 @@ describe('OrderService', () => {
 
     it('should dont allow confirm order with status different of DRAFT', () => {
       const order = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
       order.confirm();
@@ -78,24 +98,35 @@ describe('OrderService', () => {
     it('should update with partial changes', () => {
       const data = new Date();
       const order = new Order(
-        [new Product('product_a'), new Product('product_b')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [new Product('', 'product_a'), new Product('', 'product_b')],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
+        OrderStatus.DRAFT,
         data,
       );
       order.id = 'order-id';
 
       const orderUpdate = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a_update'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a_update'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       orderUpdate.id = 'order-id_update';
 
       const orderMerged = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        '',
+        [
+          new Product('', 'product_a_update'),
+          new Product('', 'product_b_update'),
+        ],
+        new Customer('', 'customer_a'),
+        new Payment('', PaymentMethod.MERCADO_PAGO),
+        OrderStatus.DRAFT,
         data,
       );
       orderMerged.id = 'order-id';

@@ -29,7 +29,13 @@ describe('OrderService', () => {
 
     it('should call repository create and promise reject', async () => {
       const createSpy = repositoryStub.create.rejects({ message: 'test' });
-      const order = new Order([new Product('Test')], null, null, null);
+      const order = new Order(
+        null,
+        [new Product(null, 'Test')],
+        null,
+        null,
+        null,
+      );
 
       expect.assertions(2);
       await expect(service.create(order)).rejects.toEqual({ message: 'test' });
@@ -38,7 +44,13 @@ describe('OrderService', () => {
 
     it('should call repository create and promise resolve', async () => {
       const createSpy = repositoryStub.create.resolves('order-id');
-      const order = new Order([new Product('Test')], null, null, null);
+      const order = new Order(
+        null,
+        [new Product(null, 'Test')],
+        null,
+        null,
+        null,
+      );
 
       expect.assertions(2);
       await expect(service.create(order)).resolves.toEqual('order-id');
@@ -73,9 +85,10 @@ describe('OrderService', () => {
 
     it('should call repository search and promise reject when call count', async () => {
       const expectedOrder = new Order(
-        [new Product('product_a'), new Product('product_b')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [new Product(null, 'product_a'), new Product(null, 'product_b')],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       const findSpy = repositoryStub.find.resolves([expectedOrder]);
       const countSpy = repositoryStub.count.rejects({ message: 'test' });
@@ -93,9 +106,10 @@ describe('OrderService', () => {
 
     it('should call repository search and promise resolve', async () => {
       const orderMock = new Order(
-        [new Product('product_a'), new Product('product_b')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [new Product(null, 'product_a'), new Product(null, 'product_b')],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       const findSpy = repositoryStub.find.resolves([orderMock]);
       const countSpy = repositoryStub.count.resolves(10);
@@ -108,9 +122,10 @@ describe('OrderService', () => {
       const expected = {
         items: [
           new Order(
-            [new Product('product_a'), new Product('product_b')],
-            new Customer('customer_a'),
-            new Payment(PaymentMethod.MERCADO_PAGO),
+            null,
+            [new Product(null, 'product_a'), new Product(null, 'product_b')],
+            new Customer(null, 'customer_a'),
+            new Payment(null, PaymentMethod.MERCADO_PAGO),
           ),
         ],
         result: { limit: 10, offset: 0, total: 10 },
@@ -138,9 +153,10 @@ describe('OrderService', () => {
     it('should call repository update and promise reject when call findById', async () => {
       const findByIdSpy = repositoryStub.findById.rejects({ message: 'test' });
       const orderMock = new Order(
-        [new Product('product_a'), new Product('product_b')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [new Product(null, 'product_a'), new Product(null, 'product_b')],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMock.id = 'order-id';
 
@@ -154,9 +170,10 @@ describe('OrderService', () => {
 
     it('should call repository update and promise reject when call update', async () => {
       const orderFromRepository = new Order(
-        [new Product('product_a')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [new Product(null, 'product_a')],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderFromRepository.id = 'order-id';
 
@@ -164,16 +181,24 @@ describe('OrderService', () => {
       const updateSpy = repositoryStub.update.rejects({ message: 'test' });
 
       const orderToUpdate = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a_update'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [
+          new Product(null, 'product_a_update'),
+          new Product(null, 'product_b_update'),
+        ],
+        new Customer(null, 'customer_a_update'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderToUpdate.id = 'order-id';
 
       const orderMerged = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [
+          new Product(null, 'product_a_update'),
+          new Product(null, 'product_b_update'),
+        ],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMerged.id = 'order-id';
 
@@ -187,9 +212,10 @@ describe('OrderService', () => {
 
     it('should call repository update and promise resolve', async () => {
       const orderFromRepository = new Order(
-        [new Product('product_a')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [new Product(null, 'product_a')],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderFromRepository.id = 'order-id';
 
@@ -197,16 +223,24 @@ describe('OrderService', () => {
       const updateSpy = repositoryStub.update.resolves();
 
       const orderToUpdate = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a_update'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [
+          new Product(null, 'product_a_update'),
+          new Product(null, 'product_b_update'),
+        ],
+        new Customer(null, 'customer_a_update'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderToUpdate.id = 'order-id';
 
       const orderMerged = new Order(
-        [new Product('product_a_update'), new Product('product_b_update')],
-        new Customer('customer_a'),
-        new Payment(PaymentMethod.MERCADO_PAGO),
+        null,
+        [
+          new Product(null, 'product_a_update'),
+          new Product(null, 'product_b_update'),
+        ],
+        new Customer(null, 'customer_a'),
+        new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMerged.id = 'order-id';
 

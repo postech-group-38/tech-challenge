@@ -1,6 +1,6 @@
 import { AssertionConcern } from '../common/assertion-concern';
 export class Customer extends AssertionConcern<Customer> {
-  constructor(readonly name: string) {
+  constructor(readonly _id: string, readonly name: string) {
     super();
     this.validate();
   }

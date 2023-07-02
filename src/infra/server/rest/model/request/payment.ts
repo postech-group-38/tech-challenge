@@ -9,6 +9,6 @@ export class PaymentRequest {
   name: PaymentMethod;
 
   toDomain() {
-    return new Payment(this.name);
+    return new Payment(null, this.name);
   }
 }
