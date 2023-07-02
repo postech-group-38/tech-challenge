@@ -3,8 +3,8 @@ import { OrderRepository } from 'src/domain/repository/order';
 import { OrderFilter } from 'src/domain/repository/order/filter';
 import { MongoCRUD } from '../../../../util/lib/mongodb/mongo-crud';
 import converter from './converter';
-import { MongoDriver } from '../../../../util/lib/mongodb/driver';
 import { Injectable } from '@nestjs/common';
+import { MongoDriver } from '../../../../config/mongodb/driver';
 
 const COLLECTION = 'order';
 

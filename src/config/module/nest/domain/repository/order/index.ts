@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { OrderRepository } from '../../../../../../domain/repository/order';
 import { OrderMongoRepository } from '../../../../../../infra/datastore/mongo/order/index';
 import { OrderRepositoryMock } from '../../../../../../infra/datastore/mock/order/index';
-import { MongoDriver } from '../../../../../../util/lib/mongodb/driver';
+import { MongoDriver } from '../../../../../mongodb/driver';
 
 function getuseClass() {
   switch (process.env.DOMAIN_REPOSITORY_ORDER_DATASTORE) {
