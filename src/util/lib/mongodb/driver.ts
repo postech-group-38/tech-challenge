@@ -7,7 +7,7 @@ export class MongoDriver {
   async connect() {
     if (this.singleton) return this.singleton;
 
-    const client = new MongoClient(process.env.MONGO_HOST, {
+    const client = new MongoClient(process.env.MONGO_URL, {
       monitorCommands: true,
     });
 
