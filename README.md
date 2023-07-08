@@ -1,6 +1,7 @@
-# Tech-challenge fase 1 (Food Order API)
+# FIAP Tech-challenge - fase 1
 > Note: under construction
 
+## (Food Order Management API)
 
 ## Recomendations
 * Node v18
@@ -9,7 +10,7 @@
   * ESLint, prettier
   * MongoDb for VS code
   * Docker
-  * VScode nvm switcher > This project use .nvmrc file to automaticaly use correct node version
+  * VScode nvm switcher > This project use .nvmrc file to automaticaly use required node version
 
 
 ## Installation
@@ -59,6 +60,7 @@ $ npm run test:cov
     ```
     $ docker-compose -f "deployments/docker-compose.yml" up
     ```
+> Note: By default the port number it runs on is **8080**.
 
 ## Running only database with docker-compose
 
@@ -73,8 +75,6 @@ $ npm run test:cov
     $ docker-compose  -f "deployments/docker-compose.yml" up -d --build mongodb
     ```
 
-> Note: By default the port number it runs on is **8080**.
-
 1. To stop the application/databse, use the following command:
 
     ```
@@ -82,7 +82,7 @@ $ npm run test:cov
     ```
 
 ## API Documentation
-To see the API use documentation. Run the app with some above commands and go to [Swagger](http://localhost:8080/api) endpoint.
+To see the API use documentation. Run the app and go to [Swagger](http://localhost:8080/api).
 
 
 ## Stay in touch
