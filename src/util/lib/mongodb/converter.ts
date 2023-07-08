@@ -10,8 +10,8 @@ function filter(object) {
   for (const key in object) {
     const value = object[key];
     if (value === undefined || value === null) continue;
-    if (key === '_id') {
-      newObject[key] = _id(value);
+    if (key === 'id') {
+      newObject._id = _id(value);
     } else {
       newObject[key] = value;
     }

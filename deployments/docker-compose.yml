@@ -5,6 +5,8 @@ services:
     image: mongo
     networks:
       - production-network
+    ports:
+      - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: tech_challenge
   app:

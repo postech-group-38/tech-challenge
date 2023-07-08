@@ -49,7 +49,7 @@ $ npm run test:cov
 
 ## Running the application and database with docker-compose
 
-1. To run the application with a database, please use the following command:
+1. To run the application with a database, use the following command:
 
     ```
     $ make up
@@ -57,12 +57,25 @@ $ npm run test:cov
     or
    
     ```
-    $ cd ./deployments && docker-compose up
+    $ docker-compose -f "deployments/docker-compose.yml" up
+    ```
+
+## Running only database with docker-compose
+
+1. To run the application with a database, use the following command:
+
+    ```
+    $ make up_db
+    ```
+    or
+   
+    ```
+    $ docker-compose  -f "deployments/docker-compose.yml" up -d --build mongodb
     ```
 
 > Note: By default the port number it runs on is **8080**.
 
-3. To stop the application, please use the following command:
+1. To stop the application/databse, use the following command:
 
     ```
     $ make stop

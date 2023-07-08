@@ -21,7 +21,7 @@ export class OrderService {
       throw new Error(`Order ${order.id} not found`);
     }
     order.confirm();
-    await this.orderQueue.send(order);
+    await this.orderQueue.push(order);
     await this.respository.update(order);
     this.logger.info(`The order with id ${orderId} was received`);
   }

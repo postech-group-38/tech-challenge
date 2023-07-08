@@ -6,7 +6,7 @@ import converter from './converter';
 import { Injectable } from '@nestjs/common';
 import { MongoDriver } from '../../../../config/mongodb/driver';
 
-const COLLECTION = 'order';
+const COLLECTION = 'orders';
 
 @Injectable()
 export class OrderMongoRepository implements OrderRepository {

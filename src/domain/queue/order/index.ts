@@ -1,7 +1,7 @@
 import { Order } from '../../model/order';
 
 export interface OrderQueue {
-  send(order: Order): Promise<void>;
+  push(order: Order): Promise<string>;
 }
 
 export const OrderQueue = Symbol('OrderQueue');
