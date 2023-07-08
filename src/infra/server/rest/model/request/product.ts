@@ -10,7 +10,7 @@ export class ProductRequest {
   name: string;
 
   toDomain() {
-    return new Product(this.name);
+    return new Product(null, this.name);
   }
 }
 

@@ -7,22 +7,26 @@ import { AssertionConcern } from '../common/assertion-concern';
 
 export class Order extends AssertionConcern<Order> {
   private _id: string;
-  private _status = OrderStatus.DRAFT;
   private _products: Product[];
   private _customer: Customer;
   private _payment: Payment;
+  private _status: OrderStatus;
   private _leadtime?: Date;
 
   constructor(
+    id: string,
     products: Product[],
     customer: Customer,
     payment: Payment,
+    status = OrderStatus.DRAFT,
     leadtime?: Date,
   ) {
     super();
+    this._id = id;
     this._products = products;
     this._customer = customer;
     this._payment = payment;
+    this._status = status;
     this._leadtime = leadtime;
     this.validate();
   }

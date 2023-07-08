@@ -14,14 +14,12 @@ RUN npm ci --only=production
 COPY . .
 
 # Expose the port on which your NestJS application will run
-EXPOSE 3000
+EXPOSE 8080
 
 # Set the environment variables for the database connection
-ENV DB_HOST=db \
-    DB_PORT=5432 \
-    DB_USER=your_username \
-    DB_PASSWORD=your_password \
-    DB_NAME=your_database_name
+ENV MONGO_URL=mongodb://localhost:27017 \
+    MONGO_DATABASE=tech_challenge \
+    DOMAIN_REPOSITORY_ORDER_DATASTORE=mongo
 
 # Install any additional system dependencies if required
 # For example, if you need to install PostgreSQL client:

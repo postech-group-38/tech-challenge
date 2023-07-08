@@ -8,19 +8,22 @@ import { PaymentMethod } from '../../../../domain/model/payment-method';
 
 const mockedOrders = [
   new Order(
-    [new Product('product_a'), new Product('product_b')],
-    new Customer('customer_a'),
-    new Payment(PaymentMethod.MERCADO_PAGO),
+    null,
+    [new Product(null, 'product_a'), new Product(null, 'product_b')],
+    new Customer(null, 'customer_a'),
+    new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
   new Order(
-    [new Product('product_b'), new Product('product_c')],
-    new Customer('customer_b'),
-    new Payment(PaymentMethod.MERCADO_PAGO),
+    null,
+    [new Product(null, 'product_b'), new Product(null, 'product_c')],
+    new Customer(null, 'customer_b'),
+    new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
   new Order(
-    [new Product('product_c'), new Product('product_d')],
-    new Customer('customer_c'),
-    new Payment(PaymentMethod.MERCADO_PAGO),
+    null,
+    [new Product(null, 'product_c'), new Product(null, 'product_d')],
+    new Customer(null, 'customer_c'),
+    new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
 ];
 
@@ -44,8 +47,8 @@ export class OrderRepositoryMock implements OrderRepository {
     return Promise.resolve('12345');
   }
 
-  update(order: Order): Promise<void> {
+  update(order: Order): Promise<boolean> {
     console.log('OrderRepositoryMock::update', order);
-    return Promise.resolve();
+    return Promise.resolve(true);
   }
 }

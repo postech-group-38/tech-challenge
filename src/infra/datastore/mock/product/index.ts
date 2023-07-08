@@ -3,9 +3,9 @@ import { ProductRepository } from 'src/domain/repository/product';
 import { ProductFilter } from 'src/domain/repository/product/filter';
 
 const mockedOrders = [
-    new Product('product_a'),
-    new Product('product_b'),
-    new Product('product_c'),
+  new Product(null, 'product_a'),
+  new Product(null, 'product_b'),
+  new Product(null, 'product_c'),
 ];
 
 export class ProductRepositoryMock implements ProductRepository {
@@ -22,6 +22,6 @@ export class ProductRepositoryMock implements ProductRepository {
   }
 
   delete(id: string): Promise<void> {
-    return Promise.resolve()
+    return Promise.resolve();
   }
 }
