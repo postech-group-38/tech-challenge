@@ -21,7 +21,7 @@ export class ProductRepositoryMock implements ProductRepository {
     return Promise.resolve('12345');
   }
 
-  delete(id: string): Promise<void> {
+  delete(id: Product): Promise<void> {
     return Promise.resolve();
   }
 }

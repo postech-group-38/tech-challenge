@@ -1,8 +1,8 @@
-import { Order } from 'src/domain/model/order';
-import { OrderQueue } from './index';
+import { Product } from 'src/domain/model/product';
+import { ProductQueue } from './index';
 
-export class OrderQueueMock implements OrderQueue {
-  push(order: Order): Promise<string> {
+export class ProductQueueMock implements ProductQueue {
+  push(product: Product): Promise<string> {
     throw new Error('Method not implemented.');
   }
 }
