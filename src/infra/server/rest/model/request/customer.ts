@@ -6,8 +6,9 @@ export class CustomerRequest {
   @ApiProperty()
   @IsString()
   name: string;
+  cpf: string;
 
   toDomain() {
-    return new Customer(null, this.name);
+    return new Customer(null, this.name, this.cpf);
   }
 }

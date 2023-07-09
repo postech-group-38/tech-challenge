@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb';
+import { CustomerDocument } from '../customer/doc';
 export type OrderDocument = {
   _id: ObjectId;
   status: string;

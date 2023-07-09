@@ -87,7 +87,7 @@ describe('OrderService', () => {
       const expectedOrder = new Order(
         null,
         [new Product(null, 'product_a'), new Product(null, 'product_b')],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       const findSpy = repositoryStub.find.resolves([expectedOrder]);
@@ -108,7 +108,7 @@ describe('OrderService', () => {
       const orderMock = new Order(
         null,
         [new Product(null, 'product_a'), new Product(null, 'product_b')],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       const findSpy = repositoryStub.find.resolves([orderMock]);
@@ -124,7 +124,7 @@ describe('OrderService', () => {
           new Order(
             null,
             [new Product(null, 'product_a'), new Product(null, 'product_b')],
-            new Customer(null, 'customer_a'),
+            new Customer('', 'customer_a', ''),
             new Payment(null, PaymentMethod.MERCADO_PAGO),
           ),
         ],
@@ -155,7 +155,7 @@ describe('OrderService', () => {
       const orderMock = new Order(
         null,
         [new Product(null, 'product_a'), new Product(null, 'product_b')],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMock.id = 'order-id';
@@ -172,7 +172,7 @@ describe('OrderService', () => {
       const orderFromRepository = new Order(
         null,
         [new Product(null, 'product_a')],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderFromRepository.id = 'order-id';
@@ -186,7 +186,7 @@ describe('OrderService', () => {
           new Product(null, 'product_a_update'),
           new Product(null, 'product_b_update'),
         ],
-        new Customer(null, 'customer_a_update'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderToUpdate.id = 'order-id';
@@ -197,7 +197,7 @@ describe('OrderService', () => {
           new Product(null, 'product_a_update'),
           new Product(null, 'product_b_update'),
         ],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMerged.id = 'order-id';
@@ -214,7 +214,7 @@ describe('OrderService', () => {
       const orderFromRepository = new Order(
         null,
         [new Product(null, 'product_a')],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderFromRepository.id = 'order-id';
@@ -228,7 +228,7 @@ describe('OrderService', () => {
           new Product(null, 'product_a_update'),
           new Product(null, 'product_b_update'),
         ],
-        new Customer(null, 'customer_a_update'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderToUpdate.id = 'order-id';
@@ -239,7 +239,7 @@ describe('OrderService', () => {
           new Product(null, 'product_a_update'),
           new Product(null, 'product_b_update'),
         ],
-        new Customer(null, 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment(null, PaymentMethod.MERCADO_PAGO),
       );
       orderMerged.id = 'order-id';

@@ -22,7 +22,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
@@ -40,7 +40,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
@@ -57,7 +57,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       const order = new Order(
@@ -66,7 +66,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
@@ -84,7 +84,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       order.id = 'order-id';
@@ -100,7 +100,7 @@ describe('OrderService', () => {
       const order = new Order(
         '',
         [new Product('', 'product_a'), new Product('', 'product_b')],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
         OrderStatus.DRAFT,
         data,
@@ -113,7 +113,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a_update'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
       );
       orderUpdate.id = 'order-id_update';
@@ -124,7 +124,7 @@ describe('OrderService', () => {
           new Product('', 'product_a_update'),
           new Product('', 'product_b_update'),
         ],
-        new Customer('', 'customer_a'),
+        new Customer('', 'customer_a', ''),
         new Payment('', PaymentMethod.MERCADO_PAGO),
         OrderStatus.DRAFT,
         data,
