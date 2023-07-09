@@ -19,7 +19,7 @@ export class ProductService {
     return new Page(products, filter, total);
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: Product): Promise<void> {
     await this.respository.delete(id);
   }
 
