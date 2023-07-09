@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Customer } from '../../model/customer';
 import { CustomerRepository } from '../../repository/customer/index';
 import { CustomerFilter } from '../../repository/customer/filter';
@@ -9,7 +9,7 @@ import * as log from '../../../util/log';
 export class CustomerService {
     private readonly logger = log.fromContext(CustomerService.name);
 
-    constructor(private readonly repository: CustomerRepository) { }
+    constructor(@Inject(CustomerRepository) private readonly repository: CustomerRepository) { }
 
     async create(customer: Customer) {
         const createdCustomer = await this.repository.create(customer);

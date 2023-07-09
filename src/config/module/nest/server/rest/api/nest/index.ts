@@ -4,6 +4,6 @@ import { ProductControllerModule } from '../../controllers/nest/product';
 import { CustomerControllerModule } from '../../controllers/nest/customer';
 
 @Module({
-  imports: [OrderControllerModule, ProductControllerModule, CustomerControllerModule],
+  imports: [OrderControllerModule, ProductControllerModule, CustomerControllerModule ],
 })
 export class APIModule {}

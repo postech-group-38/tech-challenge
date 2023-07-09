@@ -16,8 +16,8 @@ export class CustomerMongoRepository implements CustomerRepository {
     this.crud = new MongoCRUD(db.collection(COLLECTION), converter );
   }
 
-  findById(orderId: string) {
-    return this.crud.findById(orderId);
+  findById(id: string) {
+    return this.crud.findById(id);
   }
 
   count(filter: CustomerFilter) {
