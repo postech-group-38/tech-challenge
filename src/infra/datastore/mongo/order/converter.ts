@@ -18,7 +18,7 @@ function from({
   return new Order(
     _id.toHexString(),
     products.map((doc) => new Product(doc._id, doc.name)),
-    new Customer(customer._id, customer.name),
+    new Customer(customer._id, customer.name, customer.cpf),
     new Payment(payment._id, paymentMethod.fromString(payment.name)),
     orderStatus.fromString(status),
     leadtime,

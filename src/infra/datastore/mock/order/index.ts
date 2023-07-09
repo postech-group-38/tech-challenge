@@ -10,19 +10,19 @@ const mockedOrders = [
   new Order(
     null,
     [new Product(null, 'product_a'), new Product(null, 'product_b')],
-    new Customer(null, 'customer_a'),
+    new Customer(null, 'customer_c', ''),
     new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
   new Order(
     null,
     [new Product(null, 'product_b'), new Product(null, 'product_c')],
-    new Customer(null, 'customer_b'),
+    new Customer(null, 'customer_c', ''),
     new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
   new Order(
     null,
     [new Product(null, 'product_c'), new Product(null, 'product_d')],
-    new Customer(null, 'customer_c'),
+    new Customer(null, 'customer_c', ''),
     new Payment(null, PaymentMethod.MERCADO_PAGO),
   ),
 ];
