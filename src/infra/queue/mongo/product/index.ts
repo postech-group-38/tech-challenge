@@ -1,4 +1,3 @@
-import { Order } from 'src/domain/model/order';
 import { Product } from 'src/domain/model/product';
 import { MongoCRUD } from '../../../../util/lib/mongodb/mongo-crud';
 import converter from './converter';
