@@ -3,11 +3,11 @@ import { Filter } from '../filter';
 export class OrderFilter extends Filter {
   constructor(
     status: string,
-    orderId: string,
+    id: string,
     customerId: string,
     offset?: number,
     limit?: number,
   ) {
-    super({ status, orderId, customerId }, offset, limit);
+    super({ status, id, customerId }, offset, limit);
   }
 }

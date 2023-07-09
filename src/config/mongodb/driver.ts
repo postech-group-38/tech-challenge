@@ -16,8 +16,13 @@ export class MongoDriver {
     //client.on('commandSucceeded', (event) => console.debug(event));
     //client.on('commandFailed', (event) => console.debug(event));
 
-    await client.connect();
-    console.log('Connected successfully to mongo server');
+    try {
+      await client.connect();
+      console.log('Connected successfully to mongo server');
+    } catch (error) {
+      console.error('Failed to connect to mongo server', error);
+      throw new Error(error);
+    }
 
     this.singleton = client.db(process.env.MONGO_DATABASE);
     //TODO: improve to enable profile level
