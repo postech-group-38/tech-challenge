@@ -20,4 +20,8 @@ export class Customer extends AssertionConcern<Customer> {
     return this.customerName;
   }
 
+  get cpf() {
+    return this.customerName;
+  }
+
 }
