@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Product } from 'src/domain/model/product';
+import { Product } from '../../model/product';
 import { Page } from '../../common/page';
-import { ProductRepository } from 'src/domain/repository/product/index';
-import { ProductFilter } from 'src/domain/repository/product/filter';
+import { ProductRepository } from '../../repository/product';
+import { ProductFilter } from '../../repository/product/filter';
 
 @Injectable()
 export class ProductService {

@@ -8,6 +8,7 @@ export class OrderFilter extends Filter {
     offset?: number,
     limit?: number,
   ) {
+    console.log(offset, limit);
     super({ status, id, customerId }, offset, limit);
   }
 }
