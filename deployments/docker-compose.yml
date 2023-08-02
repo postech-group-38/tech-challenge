@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_DATABASE: tech_challenge
   app:
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./deployments/Dockerfile
       context: ../
     image: tech-challenge
     container_name: tech-challenge-api

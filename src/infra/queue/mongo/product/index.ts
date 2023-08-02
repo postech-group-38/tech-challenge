@@ -3,7 +3,7 @@ import { MongoCRUD } from '../../../../util/lib/mongodb/mongo-crud';
 import converter from './converter';
 import { Injectable } from '@nestjs/common';
 import { MongoDriver } from '../../../../config/mongodb/driver';
-import { ProductQueue } from '../../../../domain/queue/Product/index';
+import { ProductQueue } from '../../../../domain/queue/product';
 
 const COLLECTION = 'product_queues';
 

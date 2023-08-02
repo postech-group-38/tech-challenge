@@ -1,4 +1,4 @@
-import { Customer } from '../../model/Customer';
+import { Customer } from '../../model/customer';
 import { CustomerFilter } from './filter';
 
 export interface CustomerRepository {
